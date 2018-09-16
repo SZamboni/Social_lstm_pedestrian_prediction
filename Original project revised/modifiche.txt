@@ -1,0 +1,60 @@
+Modifiche apportate per aggiornarlo alla nuova versione di tensorflow (i numeri di riga si riferiscono al nuovo file)
+Tutte le modifiche relative all'aggiornamento di versione sono precedute da un commento che inizia con: "Nella versione di tf<1.0 era :" seguito da com'era la riga di codice successiva prima dell'avanzamento di versione
+
+    -file /lstm/model.py:
+        -riga 74 : modificato l'ordine dei parametri(scambiando il primo con il terzo) in tf.split
+        -riga 89 : sostituito il deprecato tf.nn.seq2seq con tf.contrib.legacy_seq2seq
+        -riga 93 : modificato l'ordine dei parametri (scambiando il primo con l'ultimo) in tf.concat
+        -riga 104 : modificato l'ordine dei parametri(scambiando il primo con il terzo) in tf.split
+        -riga 122 : messo tf.subtract al posto di tf.sub
+        -riga 124 : messo tf.subtract al posto di tf.sub
+        -riga 128 : messo tf.multiply al posto di tf.mul
+        -riga 132 : messo tf.multiply al posto di tf.mul
+        -riga 139 : messo tf.multiply al posto di tf.mul
+        -riga 184 : modificato l'ordine dei parametri(scambiando il primo con il terzo) in tf.split
+
+    -file /lstm/sample.py:
+        -riga 54 : modificato nome cartella aperta da "save" a "save_lstm"
+        -riga 65 : modificato nome cartella aperta da "save" a "save_lstm"
+
+    -file /social_lstm/social_model.py
+        -riga 76 : modificato l'ordine dei parametri(scambiando il primo con il terzo) in tf.split
+        -riga 81 : modificato l'ordine dei parametri(scambiando il primo con il terzo) in tf.split
+        -riga 86 : modificato l'ordine dei parametri(scambiando il primo con il terzo) in tf.split
+        -riga 90 : modificato l'ordine dei parametri(scambiando il primo con il terzo) in tf.split
+        -riga 95 : modificato l'ordine dei parametri(scambiando il primo con il terzo) in tf.split
+        -riga 106 : modificato l'ordine dei parametri(scambiando il primo con il terzo) in tf.split
+        -riga 143 : modificato l'ordine dei parametri(scambiando il primo con l'ultimo) in tf.concat
+        -riga 168 : modificato l'ordine dei parametri(scambiando il primo con il terzo) in tf.split
+        -riga 184 : sostituito il deprecato tf.select con tf.where
+        -riga 188 : sostituito il deprecato tf.select con tf.where
+        -riga 205 : modificato l'ordine dei parametri(scambiando il primo con l'ultimo) in tf.concat
+        -riga 257 : messo tf.subtract al posto di tf.sub
+        -riga 259 : messo tf.subtract al posto di tf.sub
+        -riga 263 : messo tf.multiply al posto di tf.mul
+        -riga 257 : messo tf.multiply al posto di tf.mul
+        -riga 274 : messo tf.multiply al posto di tf.mul
+        -riga 313 : modificato l'ordine dei parametri(scambiando il primo con il terzo) in tf.split
+        -riga 335 : modificato l'ordine dei parametri(scambiando il primo con il terzo) in tf.split
+        -riga 339 : modificato l'ordine dei parametri(scambiando il primo con l'ultimo) in tf.concat
+        -riga 344 : modificato l'ordine dei parametri(scambiando il primo con il terzo) in tf.split
+        -riga 358 : modificato l'ordine dei parametri(scambiando il primo con l'ultimo) in tf.concat
+
+    -file /social_lstm/social_train.py:
+        -riga 111: al posto di initialize_all_variable() messo global_variables_initializer()
+        -riga 114: al posto di all_variables() messo global_variables()
+
+
+Modifiche che non hanno a che vedere con le versioni di tf ma con funzionalità:
+
+    -nel file social_lstm/social_model:
+         -Modificata la funzione sample_gaussian_2d che ora semplicemente ritorna mx e my (media in x e media in y della gaussiana)
+
+    -nel file social_lstm/social_utils (modificato per prendere un frame ogni 6):
+         -Modificato l'ordine dei video nell'attributo della classe SocialDataLoaded data_dirs
+         -Aggiunta nella classe SocialDataLoaded l'attributo takeOneInNFrames
+         -Modificato come si calcola il numero di frame nei video che deve essere un numero divisibile per takeOneInNFrames
+         -Modificato come si calcola il numero di frame di validazione che deve essere un numero divisibile per takeOneInNFrames
+         -Camibiata la dimensione degli array val_frame_data e all_frame_data che deve essere un numero divisibile per takeOneInNFrames
+         -Il ciclo che scorre i frame dei video ora è un while
+         -La variabile che scorre i frame ora si chiama ind e viene incrementata di takeOneInNFrames

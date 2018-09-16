@@ -1,0 +1,5 @@
+Le modifiche apportate per aggiungere il "Goal" hanno modificato solo i seguenti file:
+    -social_model
+    -social_utils
+
+Pertanto tutti gli altri file sono rimasti immutati, mentre in questi file sono stati eliminati tutti i commenti originali e aggiunti quelli relativi all'implementazione
